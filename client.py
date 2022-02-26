@@ -19,11 +19,11 @@ import multiprocessing
 app = Flask(__name__)
 app.secret_key = 'BAD_SECRET_KEY'
 
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/lambdabd2'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/bdpayercheck'
 
 db= SQLAlchemy(app)
 
-ALLOWED_EXTENSIONS = {'jar'}
+#ALLOWED_EXTENSIONS = {'jar'}
 #app.config['UPLOAD_FOLDER'] = 'C://Users//Administrator//Desktop//stage'
 
 
