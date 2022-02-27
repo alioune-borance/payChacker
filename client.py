@@ -100,7 +100,7 @@ def connexion():
 def recherche():
     if request.method == 'POST':
         r = request.form.get('rech')
-        files = Ged_file.file_name.like("%"+r+"%")
+        files = Ged_file.query.filter(Ged_file.file_name.like("%"+r+"%"))
 
     return render_template("files.html",fs=files)
 

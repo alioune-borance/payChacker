@@ -21,15 +21,15 @@
                 <th>
                     files
                 </th>
-            </tr>
-            {% for f in fs %}
-            <td>
-                {{ f.file_name}}
-            </td>
-            {% endfor %}
-            <tr>
 
             </tr>
+            {% for f in fs %}
+            <tr>
+                <td>
+                    {{ f.file_name}}
+                </td>
+            </tr>
+            {% endfor %}
         </table>
     </div>
 </body>
