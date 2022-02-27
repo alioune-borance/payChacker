@@ -41,7 +41,7 @@ class Ged_employee(db.Model):
 
     employee_id = db.Column(db.Integer, primary_key=True)
     employee_email = db.Column(db.String(500),unique=True)
-    email_passwd = db.Column(db.String(500),unique=True)
+    employeee_password = db.Column(db.String(500),unique=True)
     employee_fullname = db.Column(db.String(500))
     employee_role = db.Column(db.String(500))
 
@@ -63,7 +63,7 @@ class Ged_file(db.Model):
     file_name = db.Column(db.String(500),unique=True)
     file_type = db.Column(db.String(500),unique=True)
     file_src = db.Column(db.String(500))
-    file_accountId = db.Column(db.String(500))
+    file_account_id = db.Column(db.String(500))
 
     #scenarios = db.relationship('Scenario',backref='integrateur',lazy=True)
 
@@ -90,14 +90,17 @@ def connexion():
     p = request.form.get('email')
     e = Ged_employee.query.filter_by(employee_email=p).first()
     if e != None:
-        if (request.form.get('mdp').first() == e.email_passwd):
-            return p
+        if (request.form.get('mdp') == e.employeee_password):
+            files = Ged_file.query.all()
+            return render_template("files.html",fs=files)
+
     return "p"
 
 @app.route("/recherche",methods=['GET','POST'])
 def recherche():
-    r = request.form.get('rech')
-    files = Ged_file.file_name.like("%"+r+"%")
+    if request.method == 'POST':
+        r = request.form.get('rech')
+        files = Ged_file.file_name.like("%"+r+"%")
 
     return render_template("files.html",fs=files)
 
