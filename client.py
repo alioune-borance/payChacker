@@ -83,7 +83,7 @@ db.create_all()
 #---------------
 @app.route("/",methods=['GET','POST'])
 def index():
-    return render_template("index.html")
+    return render_template("table.html")
 
 @app.route("/connexion",methods=['GET','POST'])
 def connexion():
