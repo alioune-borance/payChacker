@@ -19,7 +19,7 @@ import multiprocessing
 app = Flask(__name__)
 app.secret_key = 'BAD_SECRET_KEY'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/bdpayercheck'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/bdpayercheck'
  
 db= SQLAlchemy(app)
 
