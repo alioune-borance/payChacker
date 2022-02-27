@@ -83,7 +83,7 @@ db.create_all()
 #---------------
 @app.route("/",methods=['GET','POST'])
 def index():
-    return render_template("table.html")
+    return render_template("connexion.html")
 
 @app.route("/connexion",methods=['GET','POST'])
 def connexion():
@@ -92,7 +92,7 @@ def connexion():
     if e != None:
         if (request.form.get('mdp') == e.employeee_password):
             files = Ged_file.query.all()
-            return render_template("files.html",fs=files)
+            return render_template("documents.html",fs=files)
 
     return "p"
 
@@ -102,7 +102,7 @@ def recherche():
         r = request.form.get('rech')
         files = Ged_file.query.filter(Ged_file.file_name.like("%"+r+"%"))
 
-    return render_template("files.html",fs=files)
+    return render_template("documents.html",fs=files)
 
 if __name__ == '__main__':
     app.run()

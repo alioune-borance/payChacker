@@ -121,14 +121,16 @@
                                             <th>Actions</th>
                                         </thead>
                                         <tbody>
+                                            {% for f in fs %}
                                             <tr>
-                                                <td>Serigne_NDIAYE_12_2021.pdf</td>
-                                                <td>PayChecker</td>
+                                                <td>{{ f.file_name }}</td>
+                                                <td>entreprise1</td>
                                                 <td>2021</td>
-                                                <td>Dec.</td>
+                                                <td>Nov.</td>
                                                 <td>fiche de paie</td>
                                                 <td> <button class="pe-7s-cloud-download"></button> <button class="pe-7s-look"></button></td>
                                             </tr>
+                                            {% endfor %}
                                             <tr>
                                                 <td>Serigne_NDIAYE_11_2021.pdf</td>
                                                 <td>PayChecker</td>
