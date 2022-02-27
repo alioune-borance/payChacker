@@ -1,4 +1,4 @@
-from crypt import methods
+#from crypt import methods
 from flask import session,render_template, flash ,request, Flask, flash, jsonify, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import backref
@@ -20,7 +20,7 @@ app = Flask(__name__)
 app.secret_key = 'BAD_SECRET_KEY'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/bdpayercheck'
-
+ 
 db= SQLAlchemy(app)
 
 #ALLOWED_EXTENSIONS = {'jar'}
@@ -88,9 +88,9 @@ def index():
 @app.route("/connexion",methods=['GET','POST'])
 def connexion():
     p = request.form.get('email')
-    e = Ged_employee.query.filter_by(employee_email=p)
+    e = Ged_employee.query.filter_by(employee_email=p).first()
     if e != None:
-        if (request.form.get('mdp') == e.email_passwd):
+        if (request.form.get('mdp').first() == e.email_passwd):
             return p
     return "p"
 
